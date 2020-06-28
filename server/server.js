@@ -28,6 +28,12 @@ io.on('connection', (client) => {
         console.log(message);
     });
 
+    //Function "emit" is for send information only to Client
+    client.emit('sendMessage', {
+        users: 'Admin',
+        message: 'Hello to this app'
+    });
+
 });
 
 

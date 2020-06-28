@@ -25,10 +25,15 @@
             console.log('Lost server connection');
         });
 
-        //Function "emit" is for send information to server
+        //Function "emit" is for send information only to server
         socket.emit('sendMessage', {
             users: 'Juan',
             message: 'Hello world'
+        });
+
+        //Listenning the server
+        socket.on('sendMessage', (message) => {
+            console.log(message);
         });
     </script>
 
