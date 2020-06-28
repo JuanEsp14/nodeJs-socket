@@ -14,6 +14,11 @@ app.use(express.static(publicPath));
 
 //Inicialitized backend communication with Socket.Io
 let io = socketIo(server);
+//Inicialitized communication with frontend
+//The client parameter contains information about the connection established
+io.on('connection', (client) => {
+    console.log('User connected');
+});
 
 
 server.listen(port, (err) => {
