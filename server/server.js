@@ -24,13 +24,23 @@ io.on('connection', (client) => {
     });
 
     //Listenning the client
-    client.on('sendMessage', (message) => {
+    //The callback is received from Client
+    client.on('sendMessage', (message, callback) => {
         console.log(message);
+        if (message.user) {
+            callback({
+                res: 'All went well'
+            });
+        } else {
+            callback({
+                res: 'Everything went wrong'
+            });
+        }
     });
 
     //Function "emit" is for send information only to Client
     client.emit('sendMessage', {
-        users: 'Admin',
+        user: 'Admin',
         message: 'Hello to this app'
     });
 

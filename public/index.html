@@ -27,8 +27,10 @@
 
         //Function "emit" is for send information only to server
         socket.emit('sendMessage', {
-            users: 'Juan',
+            user: 'Juan',
             message: 'Hello world'
+        }, (resp) => {
+            console.log('Server answer: ', resp);
         });
 
         //Listenning the server
