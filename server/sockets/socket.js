@@ -1,4 +1,4 @@
-const io = require('../server');
+const { io } = require('../server');
 
 //Inicialitized communication with frontend
 //The client parameter contains information about the connection established
@@ -11,17 +11,18 @@ io.on('connection', (client) => {
 
     //Listenning the client
     //The callback is received from Client
-    client.on('sendMessage', (message, callback) => {
-        console.log(message);
-        if (message.user) {
-            callback({
-                res: 'All went well'
-            });
-        } else {
-            callback({
-                res: 'Everything went wrong'
-            });
-        }
+    client.on('sendMessage', (data, callback) => {
+        console.log(data);
+        client.broadcast.emit('sendMessage', data)
+            // if (message.user) {
+            //     callback({
+            //         res: 'All went well'
+            //     });
+            // } else {
+            //     callback({
+            //         res: 'Everything went wrong'
+            //     });
+            // }
     });
 
     //Function "emit" is for send information only to Client
