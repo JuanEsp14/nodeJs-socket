@@ -18,6 +18,10 @@ let io = socketIo(server);
 //The client parameter contains information about the connection established
 io.on('connection', (client) => {
     console.log('User connected');
+
+    client.on('disconnect', () => {
+        console.log('Disconnected user');
+    })
 });
 
 
